@@ -1,23 +1,13 @@
 ---
 - name: Kunde-A Execution Node Test
   hosts: localhost
+  connection: local
   gather_facts: false
 
   tasks:
-    - name: Get hostname
-      ansible.builtin.command: hostname
-      register: hostname_output
-      changed_when: false
-
-    - name: Get IP addresses
-      ansible.builtin.command: hostname -I
-      register: ip_output
-      changed_when: false
-
-    - name: Show test result
+    - name: Execution test
       ansible.builtin.debug:
         msg:
           - "Customer: Kunde-A"
-          - "Hostname: {{ hostname_output.stdout }}"
-          - "IP addresses: {{ ip_output.stdout }}"
           - "Execution test successful"
+          - "Job was successfully executed by AWX"
